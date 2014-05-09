@@ -1,3 +1,6 @@
+'''
+Author: Vinhthuy Phan, 2014
+'''
 from rcviz import callgraph, viz
 
 def display(sol):
