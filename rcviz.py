@@ -69,7 +69,6 @@ class callgraph(object):
 				node_options['color'] = COLORS[node.ret[-1]] if isinstance(node.ret[-1], int) else node.ret[-1]
 				node_options['style'] = 'filled'
 				node.ret = node.ret[0] if len(node.ret) > 1 else None
-				show_null_returns = False
 
 			if not show_null_returns and node.ret is None:
 				node_options['label'] = "{ %s(%s) }" % (node.fn_name, node.argstr())

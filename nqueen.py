@@ -33,7 +33,7 @@ def Queen(sol, i):
 def queen(sol, i):
    if promising(sol,i):
       if i == N-1:
-         return [True, 'cyan']
+         return [sol, 'cyan']
       else:
          for j in range(N):
             sol[i+1] = j
@@ -41,7 +41,7 @@ def queen(sol, i):
             if found:
                return [found, 'lightgrey']
 
-   return [False, 'lightgrey']
+   return [None, 'lightgrey']
 
 if __name__ == '__main__':
    # Queen([-1]*N, -1)
