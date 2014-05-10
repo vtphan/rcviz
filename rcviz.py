@@ -9,6 +9,8 @@ import pygraphviz as gviz
 import logging
 import copy
 
+COLORS = ['lightgrey','khaki','coral','turquoise','deepskyblue','gold','darkorange','goldenrod','olivedrab2','yellow','green','thistle','cyan','moccasin','red']
+
 class callgraph(object):
 	'''singleton class that stores global graph data
 	   draw graph using pygraphviz
@@ -51,7 +53,7 @@ class callgraph(object):
 		return callgraph._frames
 
 	@staticmethod
-	def render(filename, show_null_returns=True):
+	def render(filename, show_null_returns=True, annotate=False):
 
 		if not filename:
 			filename = "out.svg"
@@ -61,11 +63,19 @@ class callgraph(object):
 
 		# create nodes
 		for frame_id, node in callgraph._callers.iteritems():
-			if not show_null_returns and node.ret is None:
-				label= "{ %s(%s) }" % (node.fn_name, node.argstr())
+			if not annotate:
+				node_color = "lightgrey"
+				if not show_null_returns and node.ret is None:
+					label= "{ %s(%s) }" % (node.fn_name, node.argstr())
+				else:
+				   label= "{ %s(%s) | %s }" % (node.fn_name, node.argstr(), node.ret)
+
 			else:
-				label= "{ %s(%s) | ret: %s }" % (node.fn_name, node.argstr(), node.ret)
-			g.add_node( frame_id, shape='Mrecord', label=label, fontsize=13, labelfontsize=13)
+				label= "{ %s(%s) }" % (node.fn_name, node.argstr())
+				color_option = node.ret[-1]
+				node_color = COLORS[color_option]
+
+			g.add_node( frame_id, shape='Mrecord', label=label, fontsize=13, labelfontsize=13, color=node_color, style="filled")
 
 		# edge colors
 		step = 200 / callgraph._counter
