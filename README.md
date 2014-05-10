@@ -58,5 +58,5 @@ If the function doesn't return a value normally, to annotate return a tuple of o
 
 See nqueen.py
 
-![nqueen output](queen.png)
+![nqueen output](4queens.png)
 

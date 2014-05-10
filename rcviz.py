@@ -66,7 +66,7 @@ class callgraph(object):
 			node_options = dict(shape='Mrecord', fontsize=13, labelfontsize=13)
 
 			if annotate:
-				node_options['color'] = COLORS[node.ret[-1]] if isinstance(node.ret[-1], int) else node.ret[-1]
+				node_options['fillcolor'] = COLORS[node.ret[-1]] if isinstance(node.ret[-1], int) else node.ret[-1]
 				node_options['style'] = 'filled'
 				node.ret = node.ret[0] if len(node.ret) > 1 else None
 
