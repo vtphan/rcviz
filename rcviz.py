@@ -63,19 +63,22 @@ class callgraph(object):
 
 		# create nodes
 		for frame_id, node in callgraph._callers.iteritems():
-			if not annotate:
-				node_color = "lightgrey"
-				if not show_null_returns and node.ret is None:
-					label= "{ %s(%s) }" % (node.fn_name, node.argstr())
-				else:
-				   label= "{ %s(%s) | %s }" % (node.fn_name, node.argstr(), node.ret)
+			node_options = dict(shape='Mrecord', fontsize=13, labelfontsize=13)
 
+			if annotate:
+				node_options['color'] = COLORS[node.ret[-1]] if isinstance(node.ret[-1], int) else node.ret[-1]
+				node_options['style'] = 'filled'
+				node.ret = node.ret[0] if len(node.ret) > 1 else None
+				show_null_returns = False
+
+			if not show_null_returns and node.ret is None:
+				node_options['label'] = "{ %s(%s) }" % (node.fn_name, node.argstr())
 			else:
-				label= "{ %s(%s) }" % (node.fn_name, node.argstr())
-				color_option = node.ret[-1]
-				node_color = COLORS[color_option]
+			   node_options['label'] = "{ %s(%s) | %s }" % (node.fn_name, node.argstr(), node.ret)
 
-			g.add_node( frame_id, shape='Mrecord', label=label, fontsize=13, labelfontsize=13, color=node_color, style="filled")
+			g.add_node(frame_id, **node_options)
+
+
 
 		# edge colors
 		step = 200 / callgraph._counter
