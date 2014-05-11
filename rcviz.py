@@ -114,8 +114,8 @@ class callgraph(object):
 class node_data(object):
 
 	def __init__(self, _args=None, _kwargs=None, _fnname="", _ret=None, _childmethods=[]):
-		self.args  	= [copy.copy(a) for a in _args]
-		self.kwargs = { k : copy.copy(v) for k,v in _kwargs.items() }
+		self.args  	= _args
+		self.kwargs = _kwargs
 		self.fn_name = _fnname
 		self.ret	= _ret
 		self.child_methods = _childmethods	# [ (method, gcounter) ]
@@ -165,7 +165,7 @@ class viz(object):
 			g_frames.append( fullstack[0][0] )
 
 		if  this_frame_id not in g_callers.keys():
-			g_callers[this_frame_id] = node_data(args, kwargs, self.wrapped.__name__, None, [])
+			g_callers[this_frame_id] = node_data(copy.deepcopy(args), copy.deepcopy(kwargs), self.wrapped.__name__, None, [])
 
 		edgeinfo = None
 		if caller_frame_id:
@@ -183,7 +183,7 @@ class viz(object):
 			edgeinfo.append( callgraph.get_unwindcounter() )
 			callgraph.increment_unwind()
 
-		g_callers[this_frame_id].ret = ret
+		g_callers[this_frame_id].ret = copy.deepcopy(ret)
 
 		return ret
 
