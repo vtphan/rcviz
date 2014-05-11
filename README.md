@@ -6,7 +6,7 @@ rcviz
 * Provides a decorator to instrument target functions (as opposed to trace or debugger based approaches)
 * Uses pygraphviz to render the graph.
 
-##usage
+## Usage
 
 1. Use the @viz decorator to instrument the recursive function.
 > @viz <br>
@@ -17,7 +17,7 @@ rcviz
 
 The output file type is derived from the file name. Supported types include .dot (graphviz dot file), .png (png image), .svg (vector graphic)
 
-##example
+## Example: Quick sort
 
 ```python
 from rcviz import callgraph, viz
@@ -36,8 +36,8 @@ print quicksort( list("helloworld") )
 callgraph.render("sort.png")
 ```
 
-## output
-![quicksort rcviz output](http://s12.postimg.org/5f3eonikd/sort.png)
+## Output
+![quicksort rcviz output](ps.png)
 
 
 Note:
@@ -45,19 +45,19 @@ Note:
 2. The edges are colored from black to grey to indicate order of traversal : black edges first, grey edges last.
 
 
-### Merge Sort
+## Example: Merge sort
 
 See msort.py.
 
 ![mergesort rcviz output](ms.png)
 
-## dependencies
+## Dependencies
 
 This requires graphviz and pygraphviz to work.
 
 Tested on python 2.7.3
 
-## annotation
+## Annotation
 
 To annotate a recursive call, return a tuple of 2 things: the first item is the normal return value,
 and the second is either a color index between 1 and 10 or a string that is a [graphviz color](http://www.graphviz.org/doc/info/colors.html).
