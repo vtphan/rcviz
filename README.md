@@ -43,6 +43,11 @@ callgraph.render("sort.png")
 Note:
 1. The edges are numbered by the order in which they were traversed by the execution.
 2. The edges are colored from black to grey to indicate order of traversal : black edges first, grey edges last.
+![mergesort rcviz output](ms.png)
+
+
+### Merge Sort
+
 
 ## dependencies
 
