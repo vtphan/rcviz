@@ -33,11 +33,11 @@ def quicksort(items):
         return lesser + [pivot] + greater
 
 print quicksort( list("helloworld") )
-callgraph.render("sort.png")
+callgraph.render("qs.png")
 ```
 
 ## Output
-![quicksort rcviz output](ps.png)
+![quicksort rcviz output](qs.png)
 
 
 Note:
