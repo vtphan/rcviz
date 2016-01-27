@@ -24,4 +24,4 @@ def fact(n):
 	return n * fact(n-1)
 
 fib(11)
-callgraph.render("out.svg")
+callgraph.render()
