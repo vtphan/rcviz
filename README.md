@@ -37,7 +37,7 @@ callgraph.render()
 ```
 
 ## Output
-![quicksort rcviz output](qs.png)
+![quicksort rcviz output](images/qs.png)
 
 
 Note:
@@ -49,7 +49,7 @@ Note:
 
 See msort.py.
 
-![mergesort rcviz output](ms.png)
+![mergesort rcviz output](images/ms.png)
 
 ## Dependencies
 
@@ -63,5 +63,5 @@ If the function doesn't return a value normally, to annotate return a tuple of o
 
 See nqueen.py
 
-![nqueen output](4queens.png)
+![nqueen output](images/4queens.png)
 
