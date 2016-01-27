@@ -1,6 +1,7 @@
 
 rcviz
 =======
+This is based on [carlsborg's rcviz module](https://github.com/carlsborg/rcviz), modified to work with Python 3, with additional features.
 
 * Python module to visualize a recursion as a tree with arguments and return values at each node.
 * Provides a decorator to instrument target functions (as opposed to trace or debugger based approaches)
