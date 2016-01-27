@@ -53,7 +53,7 @@ class callgraph(object):
 		return callgraph._frames
 
 	@staticmethod
-	def render(filename, show_null_returns=True, annotate=False):
+	def render(filename=None, show_null_returns=True, annotate=False):
 
 		if not filename:
 			filename = "out.svg"
@@ -62,7 +62,7 @@ class callgraph(object):
 		g.graph_attr['label']='nodes=%s' % len(callgraph._callers)
 
 		# create nodes
-		for frame_id, node in callgraph._callers.iteritems():
+		for frame_id, node in callgraph._callers.items():
 			node_options = dict(shape='Mrecord', fontsize=13, labelfontsize=13)
 
 			if annotate:
@@ -84,7 +84,7 @@ class callgraph(object):
 		cur_color = 0
 
 		# create edges
-		for frame_id, node in callgraph._callers.iteritems():
+		for frame_id, node in callgraph._callers.items():
 			child_nodes = []
 			for child_id, counter, unwind_counter in node.child_methods:
 				child_nodes.append(child_id)
@@ -109,7 +109,7 @@ class callgraph(object):
 
 		g.draw(path=filename, prog='dot')
 
-		print "callviz: rendered to %s" % filename
+		print ("callviz: rendered to %s" % filename)
 
 class node_data(object):
 
@@ -137,10 +137,9 @@ class viz(object):
 	def __init__(self, wrapped):
 		self._verbose = False
 		self.wrapped = wrapped
-		#print "initing ", id(self)
+		# print ("initing ", id(self))
 
 	def __call__(self, *args, **kwargs):
-
 		g_callers = callgraph.get_callers()
 		g_frames  = callgraph.get_frames()
 
