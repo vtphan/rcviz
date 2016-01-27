@@ -52,9 +52,11 @@ See msort.py.
 
 ![mergesort rcviz output](images/ms.png)
 
-## Dependencies
+## Installation and Upgrade
 
-This requires graphviz and pygraphviz to work.
+- Requirement: graphviz and pygraphviz.
+- Installation: pip install git+git://github.com/vtphan/rcviz.git
+- Upgrade: pip install --upgrade git+git://github.com/vtphan/rcviz.git
 
 ## Annotation
 
