@@ -13,9 +13,9 @@ rcviz
 > def factorial(n):
 
 2. Render the recursion with
-> callgraph.render("outfile.png")
+> callgraph.render()
 
-The output file type is derived from the file name. Supported types include .dot (graphviz dot file), .png (png image), .svg (vector graphic)
+The output file is "out.svg". 
 
 ## Example: Quick sort
 
@@ -33,7 +33,7 @@ def quicksort(items):
         return lesser + [pivot] + greater
 
 print quicksort( list("helloworld") )
-callgraph.render("qs.png")
+callgraph.render()
 ```
 
 ## Output
@@ -54,8 +54,6 @@ See msort.py.
 ## Dependencies
 
 This requires graphviz and pygraphviz to work.
-
-Tested on python 2.7.3
 
 ## Annotation
 
