@@ -1,2 +1,2 @@
 
-from rcviz import callgraph, render
+from rcviz import callgraph, viz
