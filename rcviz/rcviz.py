@@ -89,7 +89,7 @@ class callgraph(object):
 			for child_id, counter, unwind_counter in node.child_methods:
 				child_nodes.append(child_id)
 				cur_color = step * counter
-				color = "#%2x%2x%2x" % (cur_color, cur_color, cur_color)
+				color = "#%2x%2x%2x" % (int(cur_color), int(cur_color), int(cur_color))
 				label = "%s (&uArr;%s)" % (counter, unwind_counter)
 				g.add_edge( frame_id, child_id, label=label, color= color, fontsize=8, labelfontsize=8, fontcolor="#999999" )
 
