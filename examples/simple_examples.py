@@ -9,7 +9,7 @@ def fib2(n):
 			Table[n] = n
 		else:
 			Table[n] = fib2(n-1) + fib2(n-2)
-	return Table[n] 
+	return Table[n]
 
 @viz
 def fib(n):
@@ -23,5 +23,5 @@ def fact(n):
 	if n==0: return 1
 	return n * fact(n-1)
 
-fib(11)
-callgraph.render()
+fib(5)
+fact(7)

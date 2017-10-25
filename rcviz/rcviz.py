@@ -133,13 +133,20 @@ class node_data(object):
 
 class viz(object):
 	''' decorator to construct the call graph with args and return values as labels '''
-
 	def __init__(self, wrapped):
 		self._verbose = False
 		self.wrapped = wrapped
-		# print ("initing ", id(self))
+		self.first_call = False
+		self.i = 0
+		# print ("__init__", id(self), wrapped)
 
 	def __call__(self, *args, **kwargs):
+		# print("__call__", args, kwargs, viz.i)
+		if self.i==0:
+			callgraph.reset()
+		local_i = self.i
+		self.i += 1
+
 		g_callers = callgraph.get_callers()
 		g_frames  = callgraph.get_frames()
 
@@ -183,6 +190,11 @@ class viz(object):
 			callgraph.increment_unwind()
 
 		g_callers[this_frame_id].ret = copy.deepcopy(ret)
+
+		# print(local_i)
+		if local_i == 0:
+			output_file = "{}.svg".format(self.wrapped.__name__)
+			callgraph.render(output_file)
 
 		return ret
 

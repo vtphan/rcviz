@@ -13,5 +13,4 @@ def quicksort(items):
 
 print quicksort( list("helloworld") )
 
-callgraph.render("sort.png")
 
